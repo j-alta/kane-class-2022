@@ -4,15 +4,36 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(billboard)
 view(billboard)
-as_tibble(billboard)
+top100 <- as_tibble(wiki_hot_100s)
+top100
 ```
 
 
 ```{r, echo = FALSE}
+freq<- top100 |> 
+  group_by(artist) |> 
+  summarize(freq = n()) |> 
+  arrange(desc(freq)) 
 
+top100 |> 
+  group_by(artist) |> 
+  summarize(freq = n()) |> 
+  arrange(desc(freq)) |> 
+  filter(freq == 1)
+
+top100 |> 
+  group_by(year) |> 
+  summarize(freq = n()) |> 
+  arrange(desc(freq)) 
+  
 ```
+
+`r freq$artist[1]` is the most frequent artist in the history of the Billboard Top 100!
+
+
+
 
