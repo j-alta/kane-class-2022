@@ -1,0 +1,18 @@
+---
+title: "Billboard"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(billboard)
+view(billboard)
+as_tibble(billboard)
+```
+
+
+```{r, echo = FALSE}
+
+```
+
